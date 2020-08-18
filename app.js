@@ -12,6 +12,8 @@ app.use(bodyParser.urlencoded({
 }))
 app.use(express.static("public"))
 
+mongoose.connect("mongodb://localhost:27017/wikiDB")
+
 app.listen(3000, function() {
     console.log("Server has started on port 3000")
 })
