@@ -12,7 +12,20 @@ app.use(bodyParser.urlencoded({
 }))
 app.use(express.static("public"))
 
-mongoose.connect("mongodb://localhost:27017/wikiDB")
+mongoose.connect("mongodb://localhost:27017/wikiDB", {useNewUrlParser: true, useUnifiedTopology: true})
+
+const articleSchema = {
+    title: String,
+    content: String
+}
+
+const Article = mongoose.model("Article", articleSchema)
+
+app.get("/articles", fuction(req, res) {
+    Article.find(function(error, foundArticles) {
+        console.log(foundArticles)
+    })
+})
 
 app.listen(3000, function() {
     console.log("Server has started on port 3000")
