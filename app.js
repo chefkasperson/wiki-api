@@ -21,7 +21,7 @@ const articleSchema = {
 
 const Article = mongoose.model("Article", articleSchema)
 
-app.get("/articles", fuction(req, res) {
+app.get("/articles", function(req, res) {
     Article.find(function(error, foundArticles) {
         console.log(foundArticles)
     })
